@@ -14,11 +14,11 @@ process.MessageLogger = cms.Service("MessageLogger",
 	destinations = cms.untracked.vstring('run_analysis_manual_out', 
 	                                     'run_analysis_manual_log', 
 	                                     'cout'
-										 ),
+	                                    ),
 	categories = cms.untracked.vstring('x_alignment_results',
                                        'x_alignment_relative_results',
                                        'y_alignment_results', 
-									   ),
+	                                  ),
 	run_analysis_manual_out = cms.untracked.PSet(
 		threshold = cms.untracked.string("INFO"),
 		INFO = cms.untracked.PSet(limit = cms.untracked.int32(0)),
