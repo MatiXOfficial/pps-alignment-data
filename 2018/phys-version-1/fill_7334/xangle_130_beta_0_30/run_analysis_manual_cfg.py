@@ -60,7 +60,7 @@ process.path = cms.Path(
 
 process.end_path = cms.EndPath(
 	process.dqmEnv
-	# + process.dqmSaver
+	+ process.dqmSaver
 )
 
 process.schedule = cms.Schedule(
