@@ -46,7 +46,7 @@ process.dqmSaver.tag = "TestDataset"
 
 process.source = cms.Source("DQMRootSource",
 	fileNames = cms.untracked.vstring(
-		# "file:../../../alig-version-3/fill_6554/xangle_130_beta_0_30/dqm_run_distributions_reference.root",
+		"file:../../../alig-version-3/fill_6554/xangle_130_beta_0_30/dqm_run_distributions_reference.root",
 		"file:dqm_run_distributions_test.root"
 	),
 )
@@ -55,7 +55,7 @@ process.ppsAlignmentConfigESSourceReference = ppsAlignmentConfigESSourceReferenc
 process.ppsAlignmentConfigESSourceTest = ppsAlignmentConfigESSourceTest
 
 process.path = cms.Path(
-  	process.ppsAlignmentHarvester
+  	# process.ppsAlignmentHarvester
 )
 
 process.end_path = cms.EndPath(
