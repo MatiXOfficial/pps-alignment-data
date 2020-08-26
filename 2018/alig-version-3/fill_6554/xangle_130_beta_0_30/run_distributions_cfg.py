@@ -1,12 +1,12 @@
 import FWCore.ParameterSet.Config as cms
 
 from input_files import input_files
-from config import ppsAlignmentConfigESSource
+from config_reference import ppsAlignmentConfigESSource
 
-process = cms.Process('testDistributions')
+process = cms.Process('referenceDistributions')
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.load("CalibPPS.Alignment.ppsAlignmentWorkerTest_cfi")
+process.load("CalibPPS.Alignment.ppsAlignmentWorkerReference_cfi")
 process.load("DQMServices.Core.DQMStore_cfi")
 
 # Message Logger
@@ -31,13 +31,13 @@ process.dqmSaver.tag = "CalibPPS"
 process.source = cms.Source("PoolSource",
 	fileNames = input_files
 )
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(57000))
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(60000))
 
 # Event Setup
 process.ppsAlignmentConfigESSource = ppsAlignmentConfigESSource
 
 process.dqmOutput = cms.OutputModule("DQMRootOutputModule",
-	fileName = cms.untracked.string("dqm_run_distributions_test.root")
+	fileName = cms.untracked.string("dqm_run_distributions_reference.root")
 )
 
 process.path = cms.Path(
