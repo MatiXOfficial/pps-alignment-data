@@ -11,12 +11,7 @@ process.load("DQMServices.Core.DQMStore_cfi")
 
 # Message Logger
 process.MessageLogger = cms.Service("MessageLogger",
-	destinations = cms.untracked.vstring('run_distributions_log', 
-	                                     'cout'
-	                                    ),
-	run_distributions_log = cms.untracked.PSet(
-		threshold = cms.untracked.string("INFO")
-	),
+	destinations = cms.untracked.vstring('cout'),
 	cout = cms.untracked.PSet(
 		threshold = cms.untracked.string('WARNING')
 	)
