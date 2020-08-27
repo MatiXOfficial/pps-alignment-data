@@ -1,29 +1,18 @@
+import sys 
+import os
 import FWCore.ParameterSet.Config as cms
 
-ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
-    sequence = cms.vstring(
-		# "x alignment",
-		"x alignment relative",
-		"y alignment"
-	),
+sys.path.append(os.path.relpath(".."))
 
-    sector_45 = cms.PSet(
-        rp_N = cms.PSet(
-            slope = cms.double(0.18)
-        ),
-        rp_F = cms.PSet(
-            slope = cms.double(0.17)
-        ),
-        slope = cms.double(0.008)
-    ),
-
-    sector_56 = cms.PSet(
-        rp_N = cms.PSet(
-            slope = cms.double(0.34)
-        ),
-        rp_F = cms.PSet(
-            slope = cms.double(0.34)
-        ),
-        slope = cms.double(-0.012)
-    )
-)
+from config_fill import ppsAlignmentConfigESSource
+ppsAlignmentConfigESSource.sequence = cms.vstring(
+	# "x alignment",
+	"x alignment relative",
+	"y alignment"
+),
+ppsAlignmentConfigESSource.sector_45.rp_N.slope = cms.double(0.18)
+ppsAlignmentConfigESSource.sector_45.rp_F.slope = cms.double(0.17)
+ppsAlignmentConfigESSource.sector_45.slope = cms.double(0.008)
+ppsAlignmentConfigESSource.sector_56.rp_N.slope = cms.double(0.34)
+ppsAlignmentConfigESSource.sector_56.rp_F.slope = cms.double(0.34)
+ppsAlignmentConfigESSource.sector_56.slope = cms.double(-0.012)

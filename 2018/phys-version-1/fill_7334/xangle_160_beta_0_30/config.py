@@ -1,9 +1,7 @@
+import sys 
+import os
 import FWCore.ParameterSet.Config as cms
 
-ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
-    sequence = cms.vstring(
-		"x alignment",
-		"x alignment relative",
-		"y alignment"
-	),
-)
+sys.path.append(os.path.relpath(".."))
+
+from config_fill import ppsAlignmentConfigESSource
