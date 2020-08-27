@@ -24,6 +24,6 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
         rp_F = cms.PSet(
             slope = cms.double(0.34)
         ),
-        slope = cms.double(-0.012),
+        slope = cms.double(-0.012)
     )
 )
