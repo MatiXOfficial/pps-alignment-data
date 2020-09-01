@@ -31,7 +31,7 @@ process.dqmSaver.tag = "CalibPPS"
 process.source = cms.Source("PoolSource",
 	fileNames = input_files
 )
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(80000))
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(300000))
 
 # Event Setup
 process.ppsAlignmentConfigESSource = ppsAlignmentConfigESSource

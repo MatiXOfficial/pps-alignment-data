@@ -2,7 +2,7 @@ import sys
 import os
 import FWCore.ParameterSet.Config as cms
 
-sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_160_beta_0_30"))
+sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_130_beta_0_30"))
 
 from input_files import input_files
 from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
@@ -42,7 +42,7 @@ process.dqmSaver.tag = "TestDataset"
 
 process.source = cms.Source("DQMRootSource",
 	fileNames = cms.untracked.vstring(
-		"file:../../../alig-version-3/fill_6554/xangle_160_beta_0_30/dqm_run_distributions_reference.root",
+		"file:../../../alig-version-3/fill_6554/xangle_130_beta_0_30/dqm_run_distributions_reference.root",
 		"file:dqm_run_distributions_test.root"
 	),
 )
