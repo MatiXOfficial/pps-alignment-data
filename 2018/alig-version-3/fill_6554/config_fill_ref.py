@@ -34,19 +34,19 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 	),
 
 	x_alignment_meth_o = cms.PSet(
-		rp_L_2_F = cms.PSet(
+		rp_L_F = cms.PSet(
 			x_min = cms.double(5.),
 			x_max = cms.double(15.),
 		),
-		rp_L_1_F = cms.PSet(
+		rp_L_N = cms.PSet(
 			x_min = cms.double(5.),
 			x_max = cms.double(15.),
 		),
-		rp_R_1_F = cms.PSet(
+		rp_R_N = cms.PSet(
 			x_min = cms.double(4.),
 			x_max = cms.double(12.),
 		),
-		rp_R_2_F = cms.PSet(
+		rp_R_F = cms.PSet(
 			x_min = cms.double(4.),
 			x_max = cms.double(12.),
 		)

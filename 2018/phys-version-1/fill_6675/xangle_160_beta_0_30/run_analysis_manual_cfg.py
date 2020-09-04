@@ -42,7 +42,6 @@ process.dqmSaver.tag = "TestDataset"
 
 process.source = cms.Source("DQMRootSource",
 	fileNames = cms.untracked.vstring(
-		"file:../../../alig-version-3/fill_6554/xangle_160_beta_0_30/dqm_run_distributions_reference.root",
 		"file:dqm_run_distributions_test.root"
 	),
 )
@@ -56,7 +55,6 @@ process.path = cms.Path(
 
 process.end_path = cms.EndPath(
 	process.dqmEnv
-	+ process.dqmSaver
 )
 
 process.schedule = cms.Schedule(
