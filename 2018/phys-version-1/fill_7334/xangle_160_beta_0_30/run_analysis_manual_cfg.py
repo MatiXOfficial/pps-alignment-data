@@ -2,7 +2,7 @@ import sys
 import os
 import FWCore.ParameterSet.Config as cms
 
-sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_160_beta_0_30"))
+sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_130_beta_0_30"))
 
 from input_files import input_files
 from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
@@ -16,6 +16,7 @@ process.load("CalibPPS.Alignment.ppsAlignmentHarvester_cfi")
 
 process.MessageLogger = cms.Service("MessageLogger",
 	destinations = cms.untracked.vstring('run_analysis_manual_out', 
+	                                     # 'run_analysis_manual_log', 
 	                                     'cout'
 	                                    ),
 	categories = cms.untracked.vstring('x_alignment_results',
@@ -29,6 +30,9 @@ process.MessageLogger = cms.Service("MessageLogger",
 		x_alignment_relative_results = cms.untracked.PSet(limit = cms.untracked.int32(100000)),
 		y_alignment_results = cms.untracked.PSet(limit = cms.untracked.int32(100000))
 	),
+	# run_analysis_manual_log = cms.untracked.PSet(
+	# 	threshold = cms.untracked.string("INFO")
+	# ),
 	cout = cms.untracked.PSet(
 		threshold = cms.untracked.string('WARNING')
 	)

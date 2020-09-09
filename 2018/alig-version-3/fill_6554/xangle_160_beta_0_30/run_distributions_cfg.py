@@ -11,7 +11,12 @@ process.load("DQMServices.Core.DQMStore_cfi")
 
 # Message Logger
 process.MessageLogger = cms.Service("MessageLogger",
-	destinations = cms.untracked.vstring('cout'),
+	destinations = cms.untracked.vstring(# 'run_distributions_log', 
+	                                     'cout'
+	                                    ),
+	# run_distributions_log = cms.untracked.PSet(
+	# 	threshold = cms.untracked.string("INFO")
+	# ),
 	cout = cms.untracked.PSet(
 		threshold = cms.untracked.string('WARNING')
 	)
@@ -26,7 +31,7 @@ process.dqmSaver.tag = "CalibPPS"
 process.source = cms.Source("PoolSource",
 	fileNames = input_files
 )
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(5000000))
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(10000000))
 
 # Event Setup
 process.ppsAlignmentConfigESSource = ppsAlignmentConfigESSource

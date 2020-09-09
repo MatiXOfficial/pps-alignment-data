@@ -14,8 +14,8 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 		),
 		nr_x_slice_min = cms.double(2.),
 		nr_x_slice_max = cms.double(16.),
-		fr_x_slice_min = cms.double(3.),
-		fr_x_slice_max = cms.double(16.5)
+		fr_x_slice_min = cms.double(2.),
+		fr_x_slice_max = cms.double(16.)
 	),
 
 	sector_56 = cms.PSet(
@@ -27,8 +27,8 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			y_cen_add = cms.double(-0.4),
 			y_width_mult = cms.double(1.0)
 		),
-		nr_x_slice_min = cms.double(2.),
-		nr_x_slice_max = cms.double(16.),
+		nr_x_slice_min = cms.double(3.),
+		nr_x_slice_max = cms.double(16.5),
 		fr_x_slice_min = cms.double(2.5),
 		fr_x_slice_max = cms.double(16.5)
 	),

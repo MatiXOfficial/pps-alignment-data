@@ -16,6 +16,6 @@ ppsAlignmentConfigESSource.sector_56.slope = cms.double(-0.012)
 
 ppsAlignmentConfigESSource.matching = cms.PSet(
     reference_datasets = cms.vstring(
-        "../../../alig-version-3/fill_6554/xangle_130_beta_0_30/DQM_V0001_CalibPPS_R000314255.root"
+        "../../../alig-version-3/fill_6554/xangle_130_beta_0_30/DQM_V0001_CalibPPS_R000314273.root"
     )
 )
