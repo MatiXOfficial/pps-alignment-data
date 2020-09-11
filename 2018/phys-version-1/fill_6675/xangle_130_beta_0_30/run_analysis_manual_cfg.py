@@ -16,7 +16,7 @@ process.load("CalibPPS.Alignment.ppsAlignmentHarvester_cfi")
 
 process.MessageLogger = cms.Service("MessageLogger",
 	destinations = cms.untracked.vstring('run_analysis_manual_out', 
-	                                     # 'run_analysis_manual_log', 
+	                                    #  'run_analysis_manual_log', 
 	                                     'cout'
 	                                    ),
 	categories = cms.untracked.vstring('x_alignment_results',
