@@ -6,7 +6,7 @@ from config import ppsAlignmentConfigESSource
 process = cms.Process('testDistributions')
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.load("CalibPPS.Alignment.ppsAlignmentWorkerTest_cfi")
+process.load("CalibPPS.Alignment.ppsAlignmentWorker_cfi")
 process.load("DQMServices.Core.DQMStore_cfi")
 
 # Message Logger
@@ -46,8 +46,7 @@ process.path = cms.Path(
 
 process.end_path = cms.EndPath(
 	process.dqmEnv +
-	process.dqmOutput +
-	process.dqmSaver
+	process.dqmOutput
 )
 
 process.schedule = cms.Schedule(

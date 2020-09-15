@@ -17,5 +17,3 @@ ppsAlignmentConfigESSource.matching = cms.PSet(
         "../../../alig-version-3/fill_6554/xangle_130_beta_0_30/DQM_V0001_CalibPPS_R000314273.root"
     )
 )
-
-ppsAlignmentConfigESSource.debug = cms.bool(True)

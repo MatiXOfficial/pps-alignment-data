@@ -6,7 +6,7 @@ from config_reference import ppsAlignmentConfigESSource
 process = cms.Process('referenceDistributions')
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.load("CalibPPS.Alignment.ppsAlignmentWorkerReference_cfi")
+process.load("CalibPPS.Alignment.ppsAlignmentWorker_cfi")
 process.load("DQMServices.Core.DQMStore_cfi")
 
 # Message Logger
@@ -35,6 +35,9 @@ process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(10000000))
 
 # Event Setup
 process.ppsAlignmentConfigESSource = ppsAlignmentConfigESSource
+
+# Worker config label
+process.ppsAlignmentWorker.label = cms.string("reference")
 
 process.path = cms.Path(
   	process.ppsAlignmentWorker
