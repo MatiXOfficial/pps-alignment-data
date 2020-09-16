@@ -6,31 +6,31 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 	sector_45 = cms.PSet(
 		rp_N = cms.PSet(
 			y_cen_add = cms.double(-0.2),
-			y_width_mult = cms.double(1.0)
+			y_width_mult = cms.double(1.0),
+			x_slice_min = cms.double(2.),
+			x_slice_max = cms.double(16.)
 		),
 		rp_F = cms.PSet(
 			y_cen_add = cms.double(-0.2),
-			y_width_mult = cms.double(1.0)
-		),
-		nr_x_slice_min = cms.double(2.),
-		nr_x_slice_max = cms.double(16.),
-		fr_x_slice_min = cms.double(2.),
-		fr_x_slice_max = cms.double(16.)
+			y_width_mult = cms.double(1.0),
+			x_slice_min = cms.double(2.),
+			x_slice_max = cms.double(16.)
+		)
 	),
 
 	sector_56 = cms.PSet(
 		rp_N = cms.PSet(
 			y_cen_add = cms.double(-0.4),
-			y_width_mult = cms.double(1.0)
+			y_width_mult = cms.double(1.0),
+			x_slice_min = cms.double(3.),
+			x_slice_max = cms.double(16.5),
 		),
 		rp_F = cms.PSet(
 			y_cen_add = cms.double(-0.4),
-			y_width_mult = cms.double(1.0)
-		),
-		nr_x_slice_min = cms.double(3.),
-		nr_x_slice_max = cms.double(16.5),
-		fr_x_slice_min = cms.double(2.5),
-		fr_x_slice_max = cms.double(16.5)
+			y_width_mult = cms.double(1.0),
+			x_slice_min = cms.double(2.5),
+			x_slice_max = cms.double(16.5)
+		)
 	),
 
 	x_alignment_meth_o = cms.PSet(

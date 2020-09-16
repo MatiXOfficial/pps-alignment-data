@@ -15,7 +15,10 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			slope = cms.double(0.),
 			sh_x = cms.double(-3.),
 			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.)
+			x_max_mode = cms.double(10.),
+
+			x_slice_min = cms.double(7.),
+			x_slice_max = cms.double(17.)
 		),
 		rp_F = cms.PSet(
 			name = cms.string("L_1_F"),
@@ -24,18 +27,16 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			slope = cms.double(0.),
 			sh_x = cms.double(-3.),
 			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.)
+			x_max_mode = cms.double(10.),
+
+			x_slice_min = cms.double(7.),
+			x_slice_max = cms.double(17.)
 		),
 		slope = cms.double(0.008),
 
 		cut_h_c = cms.double(-0.88),
 		cut_v_a = cms.double(-1.13),
 		cut_v_c = cms.double(-0.48),
-
-		nr_x_slice_min = cms.double(7.),
-		nr_x_slice_max = cms.double(17.),
-		fr_x_slice_min = cms.double(7.),
-		fr_x_slice_max = cms.double(17.)
 	),
 
 	sector_56 = cms.PSet(
@@ -46,7 +47,9 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			slope = cms.double(0.34),
 			sh_x = cms.double(-3.),
 			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.)
+			x_max_mode = cms.double(10.),
+			x_slice_min = cms.double(7.),
+			x_slice_max = cms.double(19.)
 		),
 		rp_F = cms.PSet(
 			name = cms.string("R_1_F"),
@@ -55,7 +58,9 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			slope = cms.double(0.),
 			sh_x = cms.double(-3.),
 			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.)
+			x_max_mode = cms.double(10.),
+			x_slice_min = cms.double(7.),
+			x_slice_max = cms.double(19.)
 		),
 		slope = cms.double(-0.012),
 
@@ -64,11 +69,6 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 		cut_v_apply = cms.bool(False),
 		cut_v_a = cms.double(-1.07),
 		cut_v_c = cms.double(0.),
-
-		nr_x_slice_min = cms.double(7.),
-		nr_x_slice_max = cms.double(19.),
-		fr_x_slice_min = cms.double(7.),
-		fr_x_slice_max = cms.double(19.)
 	),
 
 	chiSqThreshold = cms.double(1000.),
