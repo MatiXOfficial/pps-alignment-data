@@ -14,8 +14,12 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 
 			slope = cms.double(0.),
 			sh_x = cms.double(-3.),
-			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.),
+
+			x_min_fit_mode = cms.double(-2.),
+			x_max_fit_mode = cms.double(3.),
+			y_max_fit_mode = cms.double(10.),
+
+			y_cen_add = cms.double(0.),
 
 			x_slice_min = cms.double(7.),
 			x_slice_max = cms.double(17.)
@@ -26,13 +30,17 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 
 			slope = cms.double(0.),
 			sh_x = cms.double(-3.),
-			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.),
+
+			x_min_fit_mode = cms.double(-2.),
+			x_max_fit_mode = cms.double(3.),
+			y_max_fit_mode = cms.double(10.),
+
+			y_cen_add = cms.double(0.),
 
 			x_slice_min = cms.double(7.),
 			x_slice_max = cms.double(17.)
 		),
-		slope = cms.double(0.008),
+		slope = cms.double(-0.008),
 
 		cut_h_c = cms.double(-0.88),
 		cut_v_a = cms.double(-1.13),
@@ -46,8 +54,12 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 
 			slope = cms.double(0.34),
 			sh_x = cms.double(-3.),
-			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.),
+			x_min_fit_mode = cms.double(-2.),
+			x_max_fit_mode = cms.double(3.),
+			y_max_fit_mode = cms.double(10.),
+
+			y_cen_add = cms.double(0.),
+
 			x_slice_min = cms.double(7.),
 			x_slice_max = cms.double(19.)
 		),
@@ -57,12 +69,16 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 
 			slope = cms.double(0.),
 			sh_x = cms.double(-3.),
-			x_min_mode = cms.double(2.),
-			x_max_mode = cms.double(10.),
+			x_min_fit_mode = cms.double(-2.),
+			x_max_fit_mode = cms.double(3.),
+			y_max_fit_mode = cms.double(10.),
+
+			y_cen_add = cms.double(0.),
+			
 			x_slice_min = cms.double(7.),
 			x_slice_max = cms.double(19.)
 		),
-		slope = cms.double(-0.012),
+		slope = cms.double(0.),
 
 		cut_h_apply = cms.bool(False),
 		cut_h_c = cms.double(0.),

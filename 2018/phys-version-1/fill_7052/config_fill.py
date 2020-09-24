@@ -9,10 +9,12 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 
     sector_45 = cms.PSet(
         rp_N = cms.PSet(
-            x_max_mode = cms.double(7.8)
+            x_max_fit_mode = cms.double(7.8),
+            y_max_fit_mode = cms.double(7.8)
         ),
         rp_F = cms.PSet(
-            x_max_mode = cms.double(7.5)
+            x_max_fit_mode = cms.double(7.5),
+            y_max_fit_mode = cms.double(7.5)
         ),
 
         cut_h_c = cms.double(-38.55 + 0.5 - 0.08),
@@ -21,10 +23,12 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 
     sector_56 = cms.PSet(
         rp_N = cms.PSet(
-            x_max_mode = cms.double(8.2)
+            x_max_fit_mode = cms.double(8.2),
+            y_max_fit_mode = cms.double(8.2)
         ),
         rp_F = cms.PSet(
-            x_max_mode = cms.double(8.0)
+            x_max_fit_mode = cms.double(8.0),
+            y_max_fit_mode = cms.double(8.0)
         ),
 
         cut_h_c = cms.double(-39.26 + 0.25),
