@@ -16,7 +16,7 @@ process.load("CalibPPS.Alignment.ppsAlignmentHarvester_cfi")
 
 process.MessageLogger = cms.Service("MessageLogger",
 	destinations = cms.untracked.vstring('run_analysis_manual_out', 
-	                                    #  'run_analysis_manual_log', 
+	                                     # 'run_analysis_manual_log', 
 	                                     'cout'
 	                                    ),
 	categories = cms.untracked.vstring('x_alignment_results',
@@ -39,10 +39,11 @@ process.MessageLogger = cms.Service("MessageLogger",
 )
 
 # load DQM framework
-process.load("DQM.Integration.config.environment_cfi")
+process.load("DQMServices.Components.DQMEnvironment_cfi")
 process.dqmEnv.subSystemFolder = "CalibPPS"
-process.dqmSaver.path = ""
-process.dqmSaver.tag = "TestDataset"
+process.dqmSaver.convention = 'Offline'
+process.dqmSaver.workflow = "/CalibPPS/Alignment/CMSSW_11_2_0_pre2"
+process.dqmSaver.saveByRun = 1
 
 process.source = cms.Source("DQMRootSource",
 	fileNames = cms.untracked.vstring(
@@ -58,7 +59,6 @@ process.path = cms.Path(
 )
 
 process.end_path = cms.EndPath(
-	process.dqmEnv +
 	process.dqmSaver
 )
 
