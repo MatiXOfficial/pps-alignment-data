@@ -1,7 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
 ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
-	debug = cms.bool(True),
 	label = cms.string("reference"),
 
 	sector_45 = cms.PSet(
@@ -9,11 +8,8 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			name = cms.string("L_1_N"),
 			id = cms.int32(2),
 
-			slope = cms.double(0.),
-			sh_x = cms.double(-3.),
-
-			y_cen_add = cms.double(-0.2),
-			y_width_mult = cms.double(1.0),
+			y_cen_add = cms.double(0.),
+			y_width_mult = cms.double(1.1),
 
 			x_slice_min = cms.double(2.),
 			x_slice_max = cms.double(14.)
@@ -22,16 +18,12 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			name = cms.string("L_1_F"),
 			id = cms.int32(3),
 
-			slope = cms.double(0.),
-			sh_x = cms.double(-3.),
-
-			y_cen_add = cms.double(-0.2),
-			y_width_mult = cms.double(1.0),
+			y_cen_add = cms.double(0.),
+			y_width_mult = cms.double(1.1),
 
 			x_slice_min = cms.double(2.),
 			x_slice_max = cms.double(14.)
 		),
-		slope = cms.double(0.008),
 
 		cut_h_c = cms.double(0.),
 		cut_v_a = cms.double(-1.13),
@@ -43,10 +35,7 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			name = cms.string("R_1_N"),
 			id = cms.int32(102),
 
-			slope = cms.double(0.34),
-			sh_x = cms.double(-3.),
-
-			y_cen_add = cms.double(-0.4),
+			y_cen_add = cms.double(0.),
 			y_width_mult = cms.double(1.0),
 
 			x_slice_min = cms.double(7.),
@@ -56,16 +45,12 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 			name = cms.string("R_1_F"),
 			id = cms.int32(103),
 
-			slope = cms.double(0.),
-			sh_x = cms.double(-3.),
-
-			y_cen_add = cms.double(-0.4),
+			y_cen_add = cms.double(0.),
 			y_width_mult = cms.double(1.0),
 
 			x_slice_min = cms.double(7.),
 			x_slice_max = cms.double(19.)
 		),
-		slope = cms.double(-0.012),
 
 		cut_h_apply = cms.bool(False),
 		cut_h_c = cms.double(0.),

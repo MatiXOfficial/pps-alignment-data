@@ -22,12 +22,6 @@ process.MessageLogger = cms.Service("MessageLogger",
 	)
 )
 
-# load DQM framework
-process.load("DQM.Integration.config.environment_cfi")
-process.dqmEnv.subSystemFolder = "CalibPPS"
-process.dqmSaver.path = ""
-process.dqmSaver.tag = "CalibPPS"
-
 process.source = cms.Source("PoolSource",
 	fileNames = input_files
 )
@@ -45,7 +39,6 @@ process.path = cms.Path(
 )
 
 process.end_path = cms.EndPath(
-	process.dqmEnv +
 	process.dqmOutput
 )
 
