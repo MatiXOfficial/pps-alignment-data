@@ -6,7 +6,7 @@ from config import ppsAlignmentConfigESSource
 process = cms.Process('testDistributions')
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.load("CalibPPS.Alignment.ppsAlignmentWorker_cfi")
+process.load("CalibPPS.AlignmentGlobal.ppsAlignmentWorker_cfi")
 process.load("DQMServices.Core.DQMStore_cfi")
 
 # Message Logger

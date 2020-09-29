@@ -12,7 +12,7 @@ process = cms.Process('testDistributions')
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load("DQMServices.Core.DQMStore_cfi")
-process.load("CalibPPS.Alignment.ppsAlignmentHarvester_cfi")
+process.load("CalibPPS.AlignmentGlobal.ppsAlignmentHarvester_cfi")
 
 process.MessageLogger = cms.Service("MessageLogger",
 	destinations = cms.untracked.vstring(# 'run_analysis_manual', 
@@ -30,7 +30,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 process.load("DQMServices.Components.DQMEnvironment_cfi")
 process.dqmEnv.subSystemFolder = "CalibPPS"
 process.dqmSaver.convention = 'Offline'
-process.dqmSaver.workflow = "/CalibPPS/Alignment/CMSSW_11_2_0_pre2"
+process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_11_2_0_pre2"
 process.dqmSaver.saveByRun = -1
 process.dqmSaver.saveAtJobEnd = True
 process.dqmSaver.forceRunNumber = 999999
