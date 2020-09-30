@@ -3,16 +3,16 @@
 ## Installation
 ### 1. CMSSW
 ```
-scram project CMSSW_11_2_0_pre2
-cd CMSSW_11_2_0_pre2/src
+scram project CMSSW_11_2_0_pre6
+cd CMSSW_11_2_0_pre6/src
 cmsenv
-git clone https://github.com/MatiXOfficial/pps-alignment.git .
+git clone https://github.com/CTPPS/pps-alignment.git .
 scram b -j 8
 ```
 ### 2. Data
 ```
 cd ../../
-git clone https://github.com/MatiXOfficial/pps-alignment-data.git data
+git clone https://github.com/CTPPS/pps-alignment-data.git data
 cd data
 ```
 ## Example
