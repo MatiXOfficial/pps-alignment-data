@@ -21,9 +21,11 @@ cd data
 - xangle: 130
 - beta: 0.30
 ### 1. Reference dataset
-- Comment out `ppsAlignmentConfigESSource.matching` PSet from `config_reference.py`
 ```
 cd 2018/alig-version-3/fill_6554/xangle_130_beta_0_30
+```
+- Comment out `ppsAlignmentConfigESSource.matching` PSet from `config_reference.py`
+```
 cmsRun run_distributions_cfg.py
 ```
 - Uncomment `ppsAlignmentConfigESSource.matching` PSet from `config_reference.py`
