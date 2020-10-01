@@ -30,7 +30,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 process.load("DQMServices.Components.DQMEnvironment_cfi")
 process.dqmEnv.subSystemFolder = "CalibPPS"
 process.dqmSaver.convention = 'Offline'
-process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_11_2_0_pre2"
+process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_11_2_0_pre6"
 process.dqmSaver.saveByRun = -1
 process.dqmSaver.saveAtJobEnd = True
 process.dqmSaver.forceRunNumber = 999999
