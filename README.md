@@ -6,7 +6,11 @@
 scram project CMSSW_11_2_0_pre6
 cd CMSSW_11_2_0_pre6/src
 cmsenv
-git clone https://github.com/CTPPS/pps-alignment.git .
+git cms-init
+git remote add ctpps git@github.com:CTPPS/cmssw.git
+git fetch ctpps
+git checkout -b alignment-test ctpps/pps-alignment-global
+git cms-addpkg CalibPPS/AlignmentGlobal CalibPPS/ESProducers CondFormats/DataRecord CondFormats/PPSObjects
 scram b -j 8
 ```
 ### 2. Data
