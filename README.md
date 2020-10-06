@@ -27,12 +27,8 @@ cd data
 ### 1. Reference dataset
 ```
 cd 2018/alig-version-3/fill_6554/xangle_130_beta_0_30
-```
-- Comment out `ppsAlignmentConfigESSource.matching` PSet from `config_reference.py`
-```
 cmsRun run_distributions_cfg.py
 ```
-- Uncomment `ppsAlignmentConfigESSource.matching` PSet from `config_reference.py`
 ### 2. Test dataset
 ```
 cd ../../../phys-version-1/fill_7334/xangle_130_beta_0_30

@@ -7,6 +7,11 @@ sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_160_be
 from input_files import input_files
 from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
 from config_reference import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceReference
+ppsAlignmentConfigESSourceReference.matching = cms.PSet(
+	reference_dataset = cms.string(
+		"../../../alig-version-3/fill_6554/xangle_160_beta_0_30/DQM_V0001_CalibPPS_R000314255.root"
+	)
+)
 
 process = cms.Process('testDistributions')
 
