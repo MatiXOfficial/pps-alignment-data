@@ -35,3 +35,15 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
         cut_v_c = cms.double(1.49 + 0.17)
     )
 )
+
+ppsAlignmentConfigESSource.y_alignment = cms.PSet(
+    rp_L_F = cms.PSet(
+        x_min = cms.double(45.5)
+    ),
+    rp_L_N = cms.PSet(
+        x_min = cms.double(7.8)
+    ),
+    rp_R_F = cms.PSet(
+        x_min = cms.double(45.5)
+    )
+)

@@ -4,7 +4,6 @@ import FWCore.ParameterSet.Config as cms
 
 sys.path.append(os.path.relpath("../../../alig-version-2/fill_5332/xangle_140_beta_0_40"))
 
-from input_files import input_files
 from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
 from config_reference import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceReference
 ppsAlignmentConfigESSourceReference.matching.reference_dataset = cms.string(
@@ -18,12 +17,12 @@ process.load("DQMServices.Core.DQMStore_cfi")
 process.load("CalibPPS.AlignmentGlobal.ppsAlignmentHarvester_cfi")
 
 process.MessageLogger = cms.Service("MessageLogger",
-	destinations = cms.untracked.vstring(# 'run_analysis_manual', 
+	destinations = cms.untracked.vstring('run_analysis_manual', 
 	                                     'cout'
 	                                    ),
-	# run_analysis_manual = cms.untracked.PSet(
-	# 	threshold = cms.untracked.string("INFO")
-	# ),
+	run_analysis_manual = cms.untracked.PSet(
+		threshold = cms.untracked.string("INFO")
+	),
 	cout = cms.untracked.PSet(
 		threshold = cms.untracked.string('WARNING')
 	)
@@ -33,7 +32,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 process.load("DQMServices.Components.DQMEnvironment_cfi")
 process.dqmEnv.subSystemFolder = "CalibPPS"
 process.dqmSaver.convention = 'Offline'
-process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_11_2_0_pre6"
+process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_11_3_0_pre4"
 process.dqmSaver.saveByRun = -1
 process.dqmSaver.saveAtJobEnd = True
 process.dqmSaver.forceRunNumber = 999999
