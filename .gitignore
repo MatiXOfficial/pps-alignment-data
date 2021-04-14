@@ -3,3 +3,5 @@
 *.root.origin
 *.log
 *.txt
+*.db
+*.vscode
