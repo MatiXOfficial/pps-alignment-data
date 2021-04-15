@@ -1,5 +1,8 @@
+import sys
+####### arguments #######
+run_number = int(sys.argv[2]) if len(sys.argv) >= 3 else 0  # 1. run number of data to retrieve
+#########################
 ##### configuration #####
-run_number = 325159  # run number of data to retrieve
 input = 'sqlite_file:alignment_results.db'  # input database
 db_tag = 'CTPPSRPAlignmentCorrectionsData_test'  # database tag
 #########################
@@ -8,7 +11,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("retrieveCTPPSRPAlignmentCorrectionsData")
 
-# message logger
+# Message Logger
 process.MessageLogger = cms.Service("MessageLogger",
     destinations = cms.untracked.vstring('retrieve_CTPPSRPAlignmentCorrectionsData'
                                         ),
@@ -24,7 +27,6 @@ process.load("CondCore.CondDB.CondDB_cfi")
 process.CondDB.connect = input
 
 # A data source must always be defined. We don't need it, so here's a dummy one.
-run_number = 325159  # You can change the run number
 process.source = cms.Source("EmptyIOVSource",
     timetype = cms.string('runnumber'),
     firstValue = cms.uint64(run_number),
