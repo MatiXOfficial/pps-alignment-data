@@ -46,24 +46,24 @@ process.load("CalibPPS.AlignmentGlobal.ppsAlignmentHarvester_cfi")
 
 # Message Logger
 if produce_logs:
-	process.MessageLogger = cms.Service("MessageLogger",
-		destinations = cms.untracked.vstring('run_analysis', 
-											'cout'
-											),
-		run_analysis = cms.untracked.PSet(
-			threshold = cms.untracked.string("INFO")
-		),
-		cout = cms.untracked.PSet(
-			threshold = cms.untracked.string('WARNING')
-		)
-	)
+    process.MessageLogger = cms.Service("MessageLogger",
+        destinations = cms.untracked.vstring('run_analysis', 
+                                            'cout'
+                                            ),
+        run_analysis = cms.untracked.PSet(
+            threshold = cms.untracked.string("INFO")
+        ),
+        cout = cms.untracked.PSet(
+            threshold = cms.untracked.string('WARNING')
+        )
+    )
 else:
-	process.MessageLogger = cms.Service("MessageLogger",
-		destinations = cms.untracked.vstring('cout'),
-		cout = cms.untracked.PSet(
-			threshold = cms.untracked.string('WARNING')
-		)
-	)
+    process.MessageLogger = cms.Service("MessageLogger",
+        destinations = cms.untracked.vstring('cout'),
+        cout = cms.untracked.PSet(
+            threshold = cms.untracked.string('WARNING')
+        )
+    )
 
 # load DQM framework
 process.load("DQMServices.Components.DQMEnvironment_cfi")
@@ -76,75 +76,75 @@ process.dqmSaver.forceRunNumber = 999999
 
 # Source (histograms)
 process.source = cms.Source("DQMRootSource",
-	fileNames = cms.untracked.vstring(input_distributions),
+    fileNames = cms.untracked.vstring(input_distributions),
 )
 
 # Event Setup (test)
 if not conditions_input_from_db:
-	from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
-	process.ppsAlignmentConfigESSourceTest = ppsAlignmentConfigESSourceTest
+    from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
+    process.ppsAlignmentConfigESSourceTest = ppsAlignmentConfigESSourceTest
 else:
-	process.load("CondCore.CondDB.CondDB_cfi")
-	process.CondDB.connect = input_conditions
-	process.PoolDBESSource = cms.ESSource("PoolDBESSource",
-		process.CondDB,
-		DumbStat = cms.untracked.bool(True),
-		toGet = cms.VPSet(cms.PSet(
-			record = cms.string('PPSAlignmentConfigRcd'),
-			tag = cms.string(input_db_tag)
-		)),
-		appendToDataLabel = cms.string('')
-	)
+    process.load("CondCore.CondDB.CondDB_cfi")
+    process.CondDB.connect = input_conditions
+    process.PoolDBESSource = cms.ESSource("PoolDBESSource",
+        process.CondDB,
+        DumbStat = cms.untracked.bool(True),
+        toGet = cms.VPSet(cms.PSet(
+            record = cms.string('PPSAlignmentConfigRcd'),
+            tag = cms.string(input_db_tag)
+        )),
+        appendToDataLabel = cms.string('')
+    )
 
 # Event Setup (reference)
 if not conditions_input_from_db_reference:
-	sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_160_beta_0_30"))
-	from config_reference import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceReference
-	ppsAlignmentConfigESSourceReference.matching = cms.PSet(
-		reference_dataset = cms.string(reference_dataset_path)
-	)
-	process.ppsAlignmentConfigESSourceReference = ppsAlignmentConfigESSourceReference
+    sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_160_beta_0_30"))
+    from config_reference import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceReference
+    ppsAlignmentConfigESSourceReference.matching = cms.PSet(
+        reference_dataset = cms.string(reference_dataset_path)
+    )
+    process.ppsAlignmentConfigESSourceReference = ppsAlignmentConfigESSourceReference
 else:
-	process.load("CondCore.CondDB.CondDB_cfi")
-	process.CondDB.connect = input_conditions_reference
-	process.PoolDBESSourceReference = cms.ESSource("PoolDBESSource",
-		process.CondDB,
-		DumbStat = cms.untracked.bool(True),
-		toGet = cms.VPSet(cms.PSet(
-			record = cms.string('PPSAlignmentConfigRcd'),
-			tag = cms.string(input_db_tag_reference)
-		)),
-		appendToDataLabel = cms.string('reference')
-	)
+    process.load("CondCore.CondDB.CondDB_cfi")
+    process.CondDB.connect = input_conditions_reference
+    process.PoolDBESSourceReference = cms.ESSource("PoolDBESSource",
+        process.CondDB,
+        DumbStat = cms.untracked.bool(True),
+        toGet = cms.VPSet(cms.PSet(
+            record = cms.string('PPSAlignmentConfigRcd'),
+            tag = cms.string(input_db_tag_reference)
+        )),
+        appendToDataLabel = cms.string('reference')
+    )
 
 # SQLite results
 if write_sqlite_results:
-	process.load("CondCore.CondDB.CondDB_cfi")
-	process.CondDB.connect = output_conditions
-	process.PoolDBOutputService = cms.Service("PoolDBOutputService",
-		process.CondDB,
-		timetype = cms.untracked.string('runnumber'),
-		toPut = cms.VPSet(cms.PSet(
-			record = cms.string('CTPPSRPAlignmentCorrectionsDataRcd'),
-			tag = cms.string(output_db_tag)
-		))
-	)
+    process.load("CondCore.CondDB.CondDB_cfi")
+    process.CondDB.connect = output_conditions
+    process.PoolDBOutputService = cms.Service("PoolDBOutputService",
+        process.CondDB,
+        timetype = cms.untracked.string('runnumber'),
+        toPut = cms.VPSet(cms.PSet(
+            record = cms.string('CTPPSRPAlignmentCorrectionsDataRcd'),
+            tag = cms.string(output_db_tag)
+        ))
+    )
 
-	# DB object maker parameters
-	process.ppsAlignmentHarvester.write_sqlite_results = cms.bool(True)
-	process.ppsAlignmentHarvester.record = cms.string('CTPPSRPAlignmentCorrectionsDataRcd')
-	process.ppsAlignmentHarvester.SinceAppendMode = cms.bool(True)
-	process.ppsAlignmentHarvester.Source = cms.PSet(IOVRun = cms.untracked.uint32(1))
+    # DB object maker parameters
+    process.ppsAlignmentHarvester.write_sqlite_results = cms.bool(True)
+    process.ppsAlignmentHarvester.record = cms.string('CTPPSRPAlignmentCorrectionsDataRcd')
+    process.ppsAlignmentHarvester.SinceAppendMode = cms.bool(True)
+    process.ppsAlignmentHarvester.Source = cms.PSet(IOVRun = cms.untracked.uint32(1))
 
 process.path = cms.Path(
-  	process.ppsAlignmentHarvester
+      process.ppsAlignmentHarvester
 )
 
 process.end_path = cms.EndPath(
-	process.dqmSaver
+    process.dqmSaver
 )
 
 process.schedule = cms.Schedule(
-	process.path,
-	process.end_path
+    process.path,
+    process.end_path
 )
