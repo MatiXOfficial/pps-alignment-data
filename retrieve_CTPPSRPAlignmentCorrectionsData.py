@@ -1,6 +1,6 @@
 import sys
 ####### arguments #######
-run_number = int(sys.argv[2]) if len(sys.argv) >= 3 else 0  # 1. run number of data to retrieve
+run_number = int(sys.argv[2]) if len(sys.argv) >= 3 else 0  # used to select the IOV
 #########################
 ##### configuration #####
 input = 'sqlite_file:alignment_results.db'  # input database

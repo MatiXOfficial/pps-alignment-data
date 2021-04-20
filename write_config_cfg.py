@@ -1,5 +1,6 @@
 ########## Configuration ##########
 output_conditions = 'sqlite_file:alignment_config.db'  # Output database.
+run_number = 1  # beginning of the IOV
 db_tag = 'PPSAlignmentConfig_test'  # Database tag.
 produce_logs = False  # if set to True, a file with logs will be produced.
 product_instance_label = ''  # ES product label (empty for physics fill)
@@ -39,8 +40,8 @@ process.CondDB.connect = output_conditions
 # A data source must always be defined. We don't need it, so here's a dummy one.
 process.source = cms.Source("EmptyIOVSource",
     timetype = cms.string('runnumber'),
-    firstValue = cms.uint64(1),
-    lastValue = cms.uint64(1),
+    firstValue = cms.uint64(run_number),
+    lastValue = cms.uint64(run_number),
     interval = cms.uint64(1)
 )
 
