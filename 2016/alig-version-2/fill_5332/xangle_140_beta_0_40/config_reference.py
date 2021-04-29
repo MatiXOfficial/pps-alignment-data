@@ -64,23 +64,7 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 	y_mode_max_valid = cms.double(1.),
 
 	matching = cms.PSet(
-		reference_dataset = cms.string('../../../alig-version-2/fill_5332/xangle_140_beta_0_40/distributions.root'),
-		rp_L_F = cms.PSet(
-			sh_min = cms.double(-5.5),
-			sh_max = cms.double(-2.5)
-		),
-		rp_L_N = cms.PSet(
-			sh_min = cms.double(-5.),
-			sh_max = cms.double(-2.)
-		),
-		rp_R_N = cms.PSet(
-			sh_min = cms.double(-5.),
-			sh_max = cms.double(-2.)
-		),
-		rp_R_F = cms.PSet(
-			sh_min = cms.double(-5.5),
-			sh_max = cms.double(-2.5)
-		)
+		reference_dataset = cms.string('../../../alig-version-2/fill_5332/xangle_140_beta_0_40/distributions.root')
 	),
 
 	x_alignment_meth_o = cms.PSet(

@@ -85,6 +85,25 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
 	y_mode_unc_max_valid = cms.double(1.),
 	y_mode_max_valid = cms.double(1.),
 
+	matching = cms.PSet(
+		rp_L_F = cms.PSet(
+			sh_min = cms.double(-5.5),
+			sh_max = cms.double(-2.5)
+		),
+		rp_L_N = cms.PSet(
+			sh_min = cms.double(-5.),
+			sh_max = cms.double(-2.)
+		),
+		rp_R_N = cms.PSet(
+			sh_min = cms.double(-5.),
+			sh_max = cms.double(-2.)
+		),
+		rp_R_F = cms.PSet(
+			sh_min = cms.double(-5.5),
+			sh_max = cms.double(-2.5)
+		)
+	),
+
 	x_alignment_meth_o = cms.PSet(
 		rp_L_F = cms.PSet(
 			x_min = cms.double(9.8),
