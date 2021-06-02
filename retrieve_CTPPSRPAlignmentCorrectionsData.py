@@ -4,7 +4,7 @@ run_number = int(sys.argv[2]) if len(sys.argv) >= 3 else 0  # used to select the
 #########################
 ##### configuration #####
 input = 'sqlite_file:alignment_results.db'  # input database
-db_tag = 'CTPPSRPAlignmentCorrectionsData_test'  # database tag
+db_tag = 'PPSAlignmentConfig_test_v1_prompt'  # database tag
 #########################
 
 import FWCore.ParameterSet.Config as cms

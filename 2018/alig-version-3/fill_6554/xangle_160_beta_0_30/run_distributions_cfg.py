@@ -13,7 +13,7 @@ conditions_input_from_db = False
 input_conditions = 'sqlite_file:alignment_config_reference.db'
 
 # Database tag. Used only if conditions_input_from_db is set to True.
-db_tag = 'PPSAlignmentConfig_test'
+db_tag = 'PPSAlignmentConfig_reference_test_v1_prompt'
 ###################################
 
 import FWCore.ParameterSet.Config as cms

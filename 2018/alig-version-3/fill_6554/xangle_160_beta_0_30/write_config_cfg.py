@@ -1,6 +1,7 @@
 ########## Configuration ##########
 output_conditions = 'sqlite_file:alignment_config_reference.db'  # Output database.
-db_tag = 'PPSAlignmentConfig_test'  # Database tag.
+run_number = 314255  # beginning of the IOV
+db_tag = 'PPSAlignmentConfig_reference_test_v1_prompt'  # Database tag.
 produce_logs = False  # if set to True, a file with logs will be produced.
 product_instance_label = 'reference'  # ES product label (empty for physics fill)
 reference_dataset_path = 'DQM_V0001_CalibPPS_R000314255.root' # Path for a ROOT file with reference plots
@@ -40,8 +41,8 @@ process.CondDB.connect = output_conditions
 # A data source must always be defined. We don't need it, so here's a dummy one.
 process.source = cms.Source("EmptyIOVSource",
     timetype = cms.string('runnumber'),
-    firstValue = cms.uint64(1),
-    lastValue = cms.uint64(1),
+    firstValue = cms.uint64(run_number),
+    lastValue = cms.uint64(run_number),
     interval = cms.uint64(1)
 )
 

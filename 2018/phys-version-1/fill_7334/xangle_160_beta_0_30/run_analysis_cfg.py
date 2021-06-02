@@ -2,23 +2,29 @@
 # if set to True, a file with logs will be produced.
 produce_logs = True
 
+# if set to True, the harvester will produce an extra ROOT file with some debug plots. 
+# Works only for one-run input.
+harvester_debug = False
+
 # Path for a ROOT file with the histograms.
 input_distributions = 'file:dqm_run_distributions_test.root'
 
-# if set to True, the process will load the conditions input from an SQLite file. 
-# Otherwise, it will use ESSource.
-conditions_input_from_db = False  # test config
-conditions_input_from_db_reference = False  # reference config
+# Specifies a method used to load conditions. Can be set to:
+#   - "ESSource" - configs loaded directly via ESSource
+#   - "local_sqlite" - configs retrieved from an SQLite file (input_conditions)
+#   - "db" - configs retrieved from the Conditions DB.
+conditions_input = "ESSource"            # test config
+conditions_input_reference = "ESSource"  # reference config
 
-# Input database. Used only if conditions_input_from_db(_reference) is set to True.
+# Input database. Used only if conditions_input(_reference) is set to "local_sqlite".
 input_conditions = 'sqlite_file:alignment_config.db'
 input_conditions_reference = 'sqlite_file:../../../alig-version-3/fill_6554/xangle_160_beta_0_30/alignment_config_reference.db'
 
-# Database tag. Used only if conditions_input_from_db(_reference) is set to True.
-input_db_tag = 'PPSAlignmentConfig_test'
-input_db_tag_reference = 'PPSAlignmentConfig_test'
+# Database tag. Used only if conditions_input(_reference) is set to "local_sqlite" or "db".
+input_db_tag = 'PPSAlignmentConfig_test_v1_prompt'
+input_db_tag_reference = 'PPSAlignmentConfig_reference_test_v1_prompt'
 
-# Reference dataset path. Only used if conditions_input_from_db_reference is set to False.
+# Reference dataset path. Only used if conditions_input(_reference) is set to "ESSource".
 reference_dataset_path = '../../../alig-version-3/fill_6554/xangle_160_beta_0_30/DQM_V0001_CalibPPS_R000314255.root'
 
 # If set to True, the results will be also written to an SQLite file.
@@ -29,9 +35,6 @@ output_conditions = 'sqlite_file:alignment_results.db'
 
 # Database tag. Used only if write_sqlite_results is set to True.
 output_db_tag = 'CTPPSRPAlignmentCorrectionsData_test'
-
-# Path for a ROOT file with the histograms
-output_distributions = 'dqm_run_distributions_test.root'
 ###################################
 
 import sys 
@@ -43,6 +46,9 @@ process = cms.Process('testDistributions')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load("DQMServices.Core.DQMStore_cfi")
 process.load("CalibPPS.AlignmentGlobal.ppsAlignmentHarvester_cfi")
+
+if harvester_debug:
+    process.ppsAlignmentHarvester.debug = cms.bool(True)
 
 # Message Logger
 if produce_logs:
@@ -69,7 +75,7 @@ else:
 process.load("DQMServices.Components.DQMEnvironment_cfi")
 process.dqmEnv.subSystemFolder = "CalibPPS"
 process.dqmSaver.convention = 'Offline'
-process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_11_3_0_pre4"
+process.dqmSaver.workflow = "/CalibPPS/AlignmentGlobal/CMSSW_12_0_0_pre1"
 process.dqmSaver.saveByRun = -1
 process.dqmSaver.saveAtJobEnd = True
 process.dqmSaver.forceRunNumber = 999999
@@ -80,42 +86,66 @@ process.source = cms.Source("DQMRootSource",
 )
 
 # Event Setup (test)
-if not conditions_input_from_db:
+if conditions_input == 'ESSource':
     from config import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceTest
     process.ppsAlignmentConfigESSourceTest = ppsAlignmentConfigESSourceTest
-else:
+elif conditions_input == 'local_sqlite':
     process.load("CondCore.CondDB.CondDB_cfi")
     process.CondDB.connect = input_conditions
     process.PoolDBESSource = cms.ESSource("PoolDBESSource",
         process.CondDB,
-        DumbStat = cms.untracked.bool(True),
         toGet = cms.VPSet(cms.PSet(
             record = cms.string('PPSAlignmentConfigRcd'),
             tag = cms.string(input_db_tag)
         )),
         appendToDataLabel = cms.string('')
     )
+elif conditions_input == 'db':
+    process.load("CondCore.CondDB.CondDB_cfi")
+    process.CondDB.connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS')
+    process.PoolDBESSource = cms.ESSource("PoolDBESSource",
+        process.CondDB,
+        toGet = cms.VPSet(cms.PSet(
+            record = cms.string('PPSAlignmentConfigRcd'),
+            tag = cms.string(input_db_tag)
+        )),
+        appendToDataLabel = cms.string('')
+    )
+else:
+    raise ValueError(conditions_input + ' is wrong conditions_input')
 
 # Event Setup (reference)
-if not conditions_input_from_db_reference:
+if conditions_input_reference == 'ESSource':
     sys.path.append(os.path.relpath("../../../alig-version-3/fill_6554/xangle_160_beta_0_30"))
     from config_reference import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceReference
     ppsAlignmentConfigESSourceReference.matching = cms.PSet(
         reference_dataset = cms.string(reference_dataset_path)
     )
     process.ppsAlignmentConfigESSourceReference = ppsAlignmentConfigESSourceReference
-else:
+elif conditions_input_reference == 'local_sqlite':
     process.load("CondCore.CondDB.CondDB_cfi")
     process.CondDB.connect = input_conditions_reference
     process.PoolDBESSourceReference = cms.ESSource("PoolDBESSource",
         process.CondDB,
-        DumbStat = cms.untracked.bool(True),
         toGet = cms.VPSet(cms.PSet(
             record = cms.string('PPSAlignmentConfigRcd'),
             tag = cms.string(input_db_tag_reference)
         )),
         appendToDataLabel = cms.string('reference')
     )
+elif conditions_input_reference == 'db':
+    process.load("CondCore.CondDB.CondDB_cfi")
+    process.CondDB.connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS')
+    process.PoolDBESSourceReference = cms.ESSource("PoolDBESSource",
+        process.CondDB,
+        toGet = cms.VPSet(cms.PSet(
+            record = cms.string('PPSAlignmentConfigRcd'),
+            tag = cms.string(input_db_tag_reference)
+        )),
+        appendToDataLabel = cms.string('reference')
+    )
+else:
+    raise ValueError(conditions_input_reference + ' is wrong conditions_input_reference')
 
 # SQLite results
 if write_sqlite_results:

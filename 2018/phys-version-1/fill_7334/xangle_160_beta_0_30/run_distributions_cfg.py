@@ -2,15 +2,17 @@
 # if set to True, a file with logs will be produced.
 produce_logs = False
 
-# if set to True, the process will load the conditions input from an SQLite file. 
-# Otherwise, it will use ESSource.
-conditions_input_from_db = False 
+# Specifies a method used to load conditions. Can be set to:
+#   - "ESSource" - configs loaded directly via ESSource
+#   - "local_sqlite" - configs retrieved from an SQLite file (input_conditions)
+#   - "db" - configs retrieved from the Conditions DB.
+conditions_input = "ESSource" 
 
-# Input database. Used only if conditions_input_from_db is set to True.
-input_conditions = 'sqlite_file:alignment_config.db'
+# Input SQLite file. Used only if conditions_input is set to "local_sqlite".
+input_sqlite = 'sqlite_file:alignment_config.db'
 
-# Database tag. Used only if conditions_input_from_db is set to True.
-db_tag = 'PPSAlignmentConfig_test'
+# Database tag. Used only if conditions_input is set to "local_sqlite" or "db".
+db_tag = 'PPSAlignmentConfig_test_v1_prompt'
 
 # Path for a ROOT file with the histograms
 output_distributions = 'dqm_run_distributions_test.root'
@@ -54,12 +56,12 @@ process.source = cms.Source("PoolSource",
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(-1))
 
 # Event Setup
-if not conditions_input_from_db:
+if conditions_input == 'ESSource':
     from config import ppsAlignmentConfigESSource
     process.ppsAlignmentConfigESSource = ppsAlignmentConfigESSource
-else:
+elif conditions_input == 'local_sqlite':
     process.load("CondCore.CondDB.CondDB_cfi")
-    process.CondDB.connect = input_conditions
+    process.CondDB.connect = input_sqlite
     process.PoolDBESSource = cms.ESSource("PoolDBESSource",
 		process.CondDB,
 		DumbStat = cms.untracked.bool(True),
@@ -68,6 +70,18 @@ else:
 			tag = cms.string(db_tag)
 		))
 	)
+elif conditions_input == 'db':
+    process.load("CondCore.CondDB.CondDB_cfi")
+    process.CondDB.connect = cms.string('frontier://FrontierProd/CMS_CONDITIONS')
+    process.PoolDBESSource = cms.ESSource("PoolDBESSource",
+        process.CondDB,
+        toGet = cms.VPSet(cms.PSet(
+            record = cms.string('PPSAlignmentConfigRcd'),
+            tag = cms.string(db_tag)
+        ))
+    )
+else:
+     raise ValueError(conditions_input + ' is wrong conditions_input')
 
 # Output for the histograms
 process.dqmOutput = cms.OutputModule("DQMRootOutputModule",
