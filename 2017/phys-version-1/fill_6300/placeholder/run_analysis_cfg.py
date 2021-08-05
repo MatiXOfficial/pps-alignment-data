@@ -19,7 +19,7 @@ input_db_tag = 'PPSAlignmentConfig_test'
 input_db_tag_reference = 'PPSAlignmentConfig_test'
 
 # Reference dataset path. Only used if conditions_input_from_db_reference is set to False.
-reference_dataset_path = '../../../alig-version-7/fill_6228/xangle_150_beta_0_30/new_distributions.root'
+reference_dataset_path = '../../../alig-version-7/fill_6228/xangle_130_beta_0_30/new_distributions.root'
 
 # If set to True, the results will be also written to an SQLite file.
 write_sqlite_results = False
@@ -98,7 +98,7 @@ else:
 
 # Event Setup (reference)
 if not conditions_input_from_db_reference:
-    sys.path.append(os.path.relpath("../../../alig-version-7/fill_6228/xangle_150_beta_0_30"))
+    sys.path.append(os.path.relpath("../../../alig-version-7/fill_6228/xangle_130_beta_0_30"))
     from config_reference import ppsAlignmentConfigESSource as ppsAlignmentConfigESSourceReference
     ppsAlignmentConfigESSourceReference.matching = cms.PSet(
         reference_dataset = cms.string(reference_dataset_path)
