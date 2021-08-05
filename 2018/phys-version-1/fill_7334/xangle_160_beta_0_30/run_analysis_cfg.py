@@ -4,7 +4,7 @@ produce_logs = True
 
 # if set to True, the harvester will produce an extra ROOT file with some debug plots. 
 # Works only for one-run input.
-harvester_debug = False
+harvester_debug = True
 
 # Path for a ROOT file with the histograms.
 input_distributions = 'file:dqm_run_distributions_test.root'
@@ -21,8 +21,8 @@ input_conditions = 'sqlite_file:alignment_config.db'
 input_conditions_reference = 'sqlite_file:../../../alig-version-3/fill_6554/xangle_160_beta_0_30/alignment_config_reference.db'
 
 # Database tag. Used only if conditions_input(_reference) is set to "local_sqlite" or "db".
-input_db_tag = 'PPSAlignmentConfig_test_v1_prompt'
-input_db_tag_reference = 'PPSAlignmentConfig_reference_test_v1_prompt'
+input_db_tag = 'PPSAlignmentConfig_v1_prompt'
+input_db_tag_reference = 'PPSAlignmentConfig_reference_v1_prompt'
 
 # Reference dataset path. Only used if conditions_input(_reference) is set to "ESSource".
 reference_dataset_path = '../../../alig-version-3/fill_6554/xangle_160_beta_0_30/DQM_V0001_CalibPPS_R000314255.root'

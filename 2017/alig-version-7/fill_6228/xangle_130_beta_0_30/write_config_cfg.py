@@ -1,10 +1,10 @@
-########## Configuration ##########
+########## Configuration ########## TODO
 output_conditions = 'sqlite_file:alignment_config_reference.db'  # Output database.
-run_number = 314255  # beginning of the IOV
+run_number = 303615  # beginning of the IOV
 db_tag = 'PPSAlignmentConfig_reference_v1_prompt'  # Database tag.
 produce_logs = False  # if set to True, a file with logs will be produced.
 product_instance_label = 'reference'  # ES product label (empty for physics fill)
-reference_dataset_path = 'DQM_V0001_CalibPPS_R000314255.root' # Path for a ROOT file with reference plots
+reference_dataset_path = 'new_distributions.root' # Path for a ROOT file with reference plots
 ###################################
 
 import FWCore.ParameterSet.Config as cms

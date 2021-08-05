@@ -1,7 +1,7 @@
 ########## Configuration ##########
 output_conditions = 'sqlite_file:alignment_config.db'  # Output database.
 run_number = 1  # beginning of the IOV
-db_tag = 'PPSAlignmentConfig_test_v1_prompt'  # Database tag.
+db_tag = 'PPSAlignmentConfig_v1_prompt'  # Database tag.
 produce_logs = False  # if set to True, a file with logs will be produced.
 product_instance_label = ''  # ES product label (empty for physics fill)
 ###################################

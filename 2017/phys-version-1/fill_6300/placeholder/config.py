@@ -118,6 +118,8 @@ ppsAlignmentConfigESSource = cms.ESSource("PPSAlignmentConfigESSource",
     ),
 
     binning = cms.PSet(
-        pixel_x_offset = cms.double(0.)
+        pixel_x_offset = cms.double(0.),
+        slice_n_bins_x = cms.uint32(20),
+        slice_n_bins_y = cms.uint32(20)
     )
 )
